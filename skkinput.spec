@@ -2,7 +2,7 @@ Summary:	SKK like Japanese-input application
 Summary(pl):	Aplikacja do wprowadzania znaków japoñskich w stylu SKK
 Name:		skkinput
 Version:	3.0.6
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 #Source0Download: http://www.tatari-sakamoto.jp/~tatari/skkinput3.jis.html
@@ -28,6 +28,11 @@ Ximp oraz standardow± metod± wprowadzania pod X11R6.
 %prep
 %setup -q
 %patch0 -p1
+
+%ifarch sparc sparc64 sparcv9
+# no O_FSYNC here (on other archs it's #defined to O_SYNC)
+%{__perl} -pi -e 's/O_FSYNC/O_SYNC/' lib/lisp/stfiles.c
+%endif
 
 %build
 xmkmf -a
