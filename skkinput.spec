@@ -12,8 +12,6 @@ URL:		http://member.nifty.ne.jp/Tatari_SAKAMOTO/
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 skkinput is a kana to kanji converter with kinput protocol, kinput2
