@@ -29,7 +29,7 @@ Ximp oraz standardow± metod± wprowadzania pod X11R6.
 %patch -p1
 
 %build
-/usr/X11R6/bin/xmkmf -a
+xmkmf -a
 %{__make} CDEBUGFLAGS="%{rpmcflags}"
 
 %install
