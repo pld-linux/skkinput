@@ -12,6 +12,7 @@ Source1:	%{name}.1x
 Patch0:		%{name}-fontset.patch
 URL:		http://www.tatari-sakamoto.jp/~tatari/skkinput3.jis.html
 BuildRequires:	XFree86-devel
+BuildRequires:	perl-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
