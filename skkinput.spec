@@ -6,6 +6,7 @@ Release:	5
 License:	GPL
 Group:		X11/Applications
 Source0:	http://member.nifty.ne.jp/Tatari_SAKAMOTO/%{name}-%{version}.tar.gz
+# Source0-md5:	74c08620e8e916a3d56f3bb3e85a5d62
 Source1:	%{name}.1x
 Patch0:		%{name}-fontset.patch
 URL:		http://member.nifty.ne.jp/Tatari_SAKAMOTO/
