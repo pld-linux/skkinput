@@ -1,0 +1,330 @@
+.TH SKKINPUT 1x "February 1997"
+.SH NAME
+skkinput \- Japanese Input Method on X environment (Ver 2.00)
+.SH SYNOPSIS
+.B skkinput
+[
+.B \-toolkitoption...
+] [
+.BI \-option...
+]
+.SH "DESCRIPTION"
+.B skkinput
+is Japanese Input Method on X Window System, using kinput protocol/kinput2 
+protocol/Ximp Protocol/X Input Method(X11R6 standard).
+.LP
+skkinput converts Kana to Kanji communicating skkserv, which is in SKK 
+package, using BSD socket.  When skkserv is not available, it can works
+by using only local dictionary.  However, it does not support a features
+of waking up skkserv, which original skk have.
+.LP
+For more information, please read Japanese version of skkinput manpages.
+.SH Options
+skkinput \-help or skkinput \-? will give you list of skkinput options.
+.TP
+\fB\-version\fR or \fB\-v\fR
+print version.
+.TP
+\fB\-help\fR or \fB\-?\fR
+print help message.
+.TP
+\fB\-host\fR \fIhostname\fR or \fB\-h\fR \fIhostname\fR
+specify hostname running skkserv.
+You can also specify by using environment variable SKKSERVER 
+or configuration file.  default is "localhost"
+.TP
+\fB\-port\fR \fIport\fR or \fB\-p\fR \fIport\fR
+specify port number for communication to skkserv.
+default is 1178.
+.TP
+\fB\-config\fR \fIfile\fR or \fB\-cnf\fR \fIfile\fR
+specify path of configuration file.
+default is \fB"\fR~/.skkinput\fB"\fR.
+.TP
+\fB\-userjisyo\fR \fIjisyo-file\fR or \fB\-uj\fR \fIjisyo-file\fR
+specify user dictionary file for skkinput.
+default is \fB"\fR~/.skkinput-jisyo\fB"\fR.
+.TP
+\fB\-backjisyo\fR \fIbackup-file\fR or \fB\-bj\fR \fIbackup-file\fR
+specify back file of user dictionary file for skkinput.
+default is \fB"\fR~/.skkinput-jisyo.BAK\fB"\fR.
+.TP
+\fB\-skkjisyo\fR \fIskk-jisyo\fR or \fB\-sj\fR \fIskk-jisyo\fR
+specify user dictionary file for skk.
+default is \fB"\fR~/.skk-jisyo\fB"\fR.
+.TP
+\fB\-fontset\fR \fIkanji-font\fR
+specify font set for skkinput.  please specify string of font name and
+separate characters \fB"\fR,\fb"\fR.
+.TP
+\fB-mfontset\fR \fIroman-font\fR
+specify font set for minibuffer of skkinput.  please specify string of
+font name and separate characters \fB"\fR,\fb"\fR.
+.TP
+.B \-fg \fIcolor\fR
+specify foreground color for input window of skkinput.
+.TP
+.B \-bg \fIcolor\fR
+specify background color for input window of skkinput.
+.TP
+.B \-bd \fIcolor\fR
+specify border color for input window of skkinput.
+.TP
+\fB-/\+rv\fR
+reverse video mode for input window of skkinput.
+.TP
+\fB-/\+mfs\fR
+modify minibuffer window size according to client, when 
+OverTheSpot/OffTheSpot mode.
+.TP
+.B \-width \fIwidth\fR
+default width of Root Style Window.  unit pixel.
+.TP
+.B \-height \fIheight\fR
+default height of Root Style Window. unit pixel.
+.TP
+.B \-mwidth \fIwidth\fR
+width of minibuffer window for OffTheSpot/OverTheSpot Window Style.
+unit pixel.  height is fixed.
+.TP
+\fB-/+ns\fR
+sticky shift(?) default no.
+.TP
+\fB-\+nc\fR
+sticky control(?) default no.
+.TP
+\fB-/+kinput\fR
+support Kinput/Kinput2 Protocol, default yes.
+.TP
+\fB-/+xim\fR
+support X Input Method protocol, which is X11R6 standard, default yes.
+.TP
+\fB-/+ximp\fR
+support Ximp protocol, default yes.
+.TP
+.B \-autosave \fmsec\fR
+specify interval time for autosave check, unit milli seconds.  If \fmsec\fR is
+0, no autosave.  default 10 seconds.
+.TP
+\fB-/+sc\fR
+display mode status window under the cursor for OverTheSpot Window Style.
+default false.
+.LP
+Don't use same file for sj,bj,uj.
+.SH environment variable
+.B skkinput
+refers following environment variables.
+.TP
+.B SKKSERVER
+hostname running skkserv.
+.SH FILES
+.B skkinput 
+reads configuration file, \fB"\fR~/.skkinput\fB"\fR.
+Its format is:
+.LP
+.RS
+paramater_name:data
+.RE
+.LP
+empty line and/or line beginning `;' will be ignored.
+Don't put space between parameter and `:' and/or beginning of line,
+but you may put spaces between `:' and data.
+.LP
+Available parameter names are:
+.nf
+.ft B
+Parameter      Data              Default
+.ft
+skk-server-host "string"        "localhost"
+                hostname running skkserv
+
+skk-port-num    number          1178       
+                port number for communication to skkserv
+
+skkinput-jisyo  "string"        "~/.skkinput-jisyo"
+                skkinput user dictionary file
+
+skkinput-backup-jisyo                              
+                "string"        "~/.skkinput-jisyo.BAK"
+                backup of skkinput user dictionary file
+
+skk-jisyo       "string"        "~/.skk-jisyo"     
+                skk user dictionary file
+
+skkinput-record "string"        "~/.skkinput-record"
+                skkinput-record file
+
+skkinput-egg-like-newline
+                t or nil        nil                 
+                newline for confirmation?
+
+skkinput-chat-adapter-mode
+                t or nil        nil                 
+                include newline code except of empty line?
+
+skkinput-keep-record
+                t or nil         t
+                create skkinput-record ?
+
+skkinput-search-skk-jisyo
+                t or nil         t
+               refer skk user dictionary?
+
+skkinput-date-ad
+                t or nil          nil
+               date of j-today?
+
+skkinput-number-style   
+               0 or 1 or 2      0
+               j-today style
+                 0 ... ASCII
+                 1 ... JIS X0208
+                 2 ... Kanji Number
+
+skkinput-delete-implies-kakutei
+               t or nil          t
+               confirm by backward-delete-char when converting
+               display previous candidate in case of nil.
+
+skkinput-use-numeric-conversion
+               t or nil          t
+               enable conversion with numberic parameters?
+
+skkinput-zenkaku-vector
+               ( num . "string" )
+
+skkinput-input-vector
+               ( num . "string" )
+
+skkinput-rom-kana-rule-list
+             ( "state@input" "next-state" "hiragana-output" "katakana-output" )
+               Romaji Kana conversion rule
+               e.g. ( "nn" "n" "¤ó" "¥ó" )
+
+define-key-skkmap
+               ( "string" . "string" )
+define-key-abbrevmap
+               ( "string" . "string" )
+               modify key assign
+               you can use the followings for right side
+     self-insert-command,      j-self-insert,
+     j-self-zenkaku-insert,    j-display-code-for-char-at-point,
+     j-set-henkan-point,       j-set-henkan-point-subr,
+     j-insert-a,               j-insert-e,
+     j-insert-i,               j-insert-o
+     j-insert-u,               j-kana-input,
+     j-start-henkan,           j-insert-comma,
+     j-insert-period,          j-purge-from-jisyo,
+     j-input-by-code-or-menu,  j-mode-off,
+     j-toggle-kana,            j-previous-candidate,
+     j-kakutei,                j-abbrev-input,
+     j-abbrev-comma,           j-zenkaku-eiji,
+     j-zenkaku-henkan,         j-today,
+     save-skkinput-local-jisyo,j-kanainput-mode-on,
+     newline,                  set-mark-command,
+     forward-char,             backward-char,
+     delete-char,              delete-backward-char,
+     j-try-comletion,          end-of-line,
+     beginning-of-line,        kill-line,
+     yank,                     kill-region,
+     kill-ring-save,           exchange-point-and-mark,
+     transpose-chars,          redraw,
+     prefix-char,              sendback-key,
+     keyboard-quit,            close-skkinput,
+     vc-toggle-chatmode,       j-mode-off-and-self-insert
+
+undefine-key-skkmap
+               "string"
+undefine-key-abbrevmap
+               "string"
+
+tab-width      number             8
+               number of space for C-i
+
+skkinput-rjj-like-input
+               t or nil   nil
+
+skkinput-lisp  string
+               eval this string as skkinput-lisp
+.fi
+.ft R
+.LP
+.SH X DEFAULTS
+.TP
+.B fontSet
+see \fB-fontset\fR option
+.TP
+.B minibufferFontSet
+see \fB-mfontset\fR option
+.TP
+.B foreground
+see \fB-fg\fR option
+.TP
+.B background
+see \fB-bg\fR option
+.TP
+.B borderColor
+see \fB-bd\fR option
+.TP
+.B reverseVideo
+see \fB-/+rv\fR option
+.TP
+.B xim.conversionStartKey
+key assign for invoking X Input Method(X11R6 standard)
+.TP
+.B xim.supportedLocales
+locale for X Input Method(X11R6 standard)
+.TP
+.B ximp.conversionStartKey
+key assign for invoking Ximp Protocol
+.TP
+.B width 
+Root Window Style width, see \fB-width\fR option
+.TP
+.B height
+Root Window Style height, see \fB-height\fR option
+.TP
+.B separate.overTheSpotLikeInput
+one line input or over the spot like input for Root Window Style
+.TP
+.B changeMinibufferFont
+see \fB-/+mfc\fR option
+.TP
+.B minibuffer_width
+see \fB-mwidth\fR option
+.TP
+.B offthespot.overthespotLikeInput
+one line input or over the spot like input for OffTheSpot Window Style
+.TP
+.B overthespot.overthespotLikeInput
+one line input or over the spot like input for OverTheSpot Window Style
+.TP
+.B shiftHaTugiDeYukou
+see \fB-/+ns\fR option
+.TP
+.B controlHaTugiDeYukou
+see \fB-/+nc\fR option
+.TP
+.B southCursor
+see \fB-/+sc\fR option
+.LP
+.SH "SEE ALSO"
+.nf
+.ft B
+.ft
+"~/.skkinput"              configuration file
+"~/.skkinput-jisyo"        skkinput user dictionary
+"~/.skkinput-jisyo.BAK"    backup of skkinput user dictionary
+"~/.skkinput-record"       skkinput statistics
+"~/.skk-jisyo"             skk user dictionary
+.fi
+.LP
+.SH AUTHORS
+skkinput is developed by sakamoto@kuis.kyoto-u.ac.jp, 
+PXG01715@niftyserve.or.jp.
+The latest version of skkinput can be found at
+http://www.yajima.kuis.kyoto-u.ac.jp/staffs/sakamoto/skkinput/skkinput.html
+.LP
+This manual page was written by Fumitoshi UKAI <ukai@debian.or.jp>,
+for the Debian GNU/Linux system (but may be used by others), based
+on original Japanese version of manpage.
