@@ -1,5 +1,5 @@
 Summary:	SKK like Japanese-input application
-Summary(pl):	Aplikacja do wprowadzania znaków japoñskich w stylu SKK
+Summary(pl.UTF-8):   Aplikacja do wprowadzania znakÃ³w japoÅ„skich w stylu SKK
 Name:		skkinput
 Version:	3.0.6
 Release:	2
@@ -22,9 +22,9 @@ skkinput is a kana to kanji converter with kinput protocol, kinput2
 protocol, Ximp Protocol, X Input Method (X11R6 standard) under X
 Window System.
 
-%description -l pl
-skkinput jest konwerterem kana do kanji z protoko³ami kinput, kinput2,
-Ximp oraz standardow± metod± wprowadzania pod X11R6.
+%description -l pl.UTF-8
+skkinput jest konwerterem kana do kanji z protokoÅ‚ami kinput, kinput2,
+Ximp oraz standardowÄ… metodÄ… wprowadzania pod X11R6.
 
 %prep
 %setup -q
