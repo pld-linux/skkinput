@@ -1,5 +1,5 @@
 Summary:	SKK like Japanese-input application
-Summary(pl.UTF-8):   Aplikacja do wprowadzania znaków japońskich w stylu SKK
+Summary(pl.UTF-8):	Aplikacja do wprowadzania znaków japońskich w stylu SKK
 Name:		skkinput
 Version:	3.0.6
 Release:	2
